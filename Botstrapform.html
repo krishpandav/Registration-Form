@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Form</title>
+    <link rel="stylesheet" href="bootstrap-5.0.2-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bootstyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <script src="bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link id="favIcon" rel="icon" type="image/x-icon" href="img_avatar1.png">
+</head>
+
+<body>
+    <div class="container-md">
+        <div class="justify-content-between row ">
+            <div class="col-sm px-4 mb-3" id="FormOpenDiv">
+                <div class="row">
+                    <span type="button" class="col-12 col-sm-4 btn " data-bs-toggle="modal"
+                        data-bs-target="#myModal" id="formOpenbtn">
+                        Registration Form
+                    </span>
+
+                </div>
+            </div>
+            <div class="col-sm-4 mb-3" id="searcDiv">
+                <input class="form-control"  type="search" placeholder="Search" id="search" aria-label="Search"
+                    aria-describedby="search-addon" autocomplete="off">
+            </div>
+        </div>
+
+        <div class="table-responsive text-nowrap  " id="tableDiv">
+            <table class="table sortable" id="table">
+                <thead class="table-primary thead ">
+                    <tr>
+                        <th onclick="sortTable(0)">No.</th>
+                        <th onclick="sortTable(1)">Firstname</th>
+                        <th onclick="sortTable(2)">Middlename</th>
+                        <th onclick="sortTable(3)">Lastname</th>
+                        <th onclick="sortTable(4)">DOB</th>
+                        <th onclick="sortTable(5)">Mobile No</th>
+                        <th onclick="sortTable(6)">Gender</th>
+                        <th onclick="sortTable(7)">Address1</th>
+                        <th onclick="sortTable(8)">Address2</th>
+                        <th onclick="sortTable(9)">Country</th>
+                        <th onclick="sortTable(10)">State</th>
+                        <th onclick="sortTable(11)">City</th>
+                        <th onclick="sortTable(12)">PinCode</th>
+                        <th onclick="sortTable(13)">Username</th>
+                        <th onclick="sortTable(14)">Email</th>
+                        <th onclick="sortTable(15)">Password</th>
+                        <th onclick="sortTable(16)">Hobby</th>
+                        <th onclick="sortTable(17)">Skill</th>
+                        <th onclick="sortTable(18)">Action</th>
+                    </tr>
+                </thead>
+                <tbody class="tbody " id="tbody">
+
+                </tbody>
+            </table>
+        </div>
+
+        <div class="paginationShow" id="pagiMainDiv">
+            <ul class="pagination pagination-md justify-content-center mt-3">
+                <div class="d-flex outerDivOfpagination">
+                    <li class="page-item " onclick="firstPage()" id="firstPage"><a class="page-link"
+                            href="javascript:void(0);">&lt;&lt;</a></li>
+                    <li class="" onclick="prevPage()"><a class="page-link" href="javascript:void(0);"
+                            id="btn_prev">Previous</a></li>
+                    <div class="pageNumber d-flex" id="pageNumber">
+
+                    </div>
+                    <li class="page-item" onclick="nextPage()"><a class="page-link" href="javascript:void(0);"
+                            id="btn_next" style="
+                            margin-left: 10px;
+                        ">Next</a></li>
+                    <li class="page-item " onclick=" lastPage();"><a class="page-link" href="javascript:void(0);" style="
+                            margin-left: 10px;
+                        ">&gt;&gt;</a> </li>
+                </div>
+            </ul>
+            <!-- <ul class=" m-0  "> -->
+            <div class="rowNumber m-0 ms-1 mt-3 p-0 ">
+                <select class="page-link " name="pageRecordSize" id="pageRecordSize">
+                    <option value="5">5</option>
+                    <!-- <option value="2">2</option> -->
+                    <option value="10">10</option>
+                    <option value="25">25</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                </select>
+            </div>
+            <!-- </ul> -->
+        </div>
+    </div>
+
+
+    <!-- The Modal -->
+    <div class="modal fade" id="myModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content ">
+
+                <!-- Modal Header
+                <div class="modal-header">
+                    <h4 class="modal-title">Modal Heading</h4>                    
+                </div> -->
+
+                <!-- Modal body -->
+                <!-- <div class="bg-image"></div> -->
+                <div class="modal-body   bg-light rounded rounded-5 shadow-lg">
+                    <button type="button" id="modalClose" class="btn btn-close  " data-bs-dismiss="modal" aria-label="Close"
+                    onclick="clearForm()"></button>
+                    <div class="row">
+                        <!-- <div class=" col-lg-2  img">
+
+                        </div> -->
+                        <div class="col-12  ">
+                            <form class="needs-validation" name="myForm" id="myForm" method="post" novalidate>
+                                <h2 class="mb-3">Registration Form</h2>
+                                <div class="row">
+                                    <div class="col-sm-4 mb-3 mt-2">
+                                        <div class=" form-floating " id="inputValidationDiv1">
+                                            <input type="text" class=" form-control input control" id="fname"
+                                                oninput="changeText()" onkeydown="return /[a-z]/i.test(event.key)"
+                                                placeholder="" maxlength="50" autocomplete="off" required>
+                                            <valid id="validFname"><i class="fa-solid fa-circle-exclamation"></i>
+                                                This is a required question*
+                                            </valid>
+                                            <valid id="validFnameChar"><i class="fa-solid fa-circle-exclamation"></i>
+                                                Enter atleast three character*
+                                            </valid>
+
+                                            <label for="fname" class="form-label  label " id="fname">First Name</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 mb-3 mt-2">
+                                        <div class=" form-floating " id="inputValidationDiv2">
+                                            <input type="text" class=" form-control input control" id="mname"
+                                                oninput="changeText()" onkeydown="return /[a-z]/i.test(event.key)"
+                                                placeholder="" maxlength="50" autocomplete="off" required>
+                                            <valid id="validMname"><i class="fa-solid fa-circle-exclamation"></i>
+                                                This is a required question*
+                                            </valid>
+                                            <valid id="validMnameChar"><i class="fa-solid fa-circle-exclamation"></i>
+                                                Enter atleast three character*
+                                            </valid>
+
+                                            <label for="mname" class="form-label  label">Middle Name</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 mb-3 mt-2 ">
+                                        <div class=" form-floating " id="inputValidationDiv3">
+                                            <input type="text" class="form-control input control" id="lname"
+                                                oninput="changeText()" onkeydown="return /[a-z]/i.test(event.key)"
+                                                placeholder="" maxlength="50" autocomplete="off" required>
+
+                                            <label for="lname" class="form-label label">Last Name</label>
+                                            <valid id="validLname"><i class="fa-solid fa-circle-exclamation"></i>
+                                                This is a required question*</valid>
+                                            <valid id="validLnameChar"><i class="fa-solid fa-circle-exclamation"></i>
+                                                Enter atleast three character*
+                                            </valid>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-4 mt-2">
+                                        <div class="form-floating" id="inputValidationDiv4">
+                                            <input type="date" class="form-control input " name="date" id="date"
+                                                min="1980-01-01" max="now">
+                                            <label for="date" class="form-date ms-2 label upper">Date of birth </label>
+                                            <valid id="validDate"><i class="fa-solid fa-circle-exclamation"></i>
+                                                This is a required question*
+                                            </valid>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 mt-2 ">
+                                        <div class=" form-floating ">
+                                            <input type="text" class=" form-control input control" id="phoneNo"
+                                                placeholder="" maxlength="10" autocomplete="off" required >
+                                            <label for="phoneNo" class="form-label  label">Mobile No.</label>
+                                            <valid id="validPhone"><i class="fa-solid fa-circle-exclamation"></i>
+                                                This is a required question*
+                                            </valid>
+                                            <valid id="validPhoneLen"><i class="fa-solid fa-circle-exclamation"></i>
+                                                Enter valid number*
+                                            </valid>
+                                        </div>
+                                    </div>
+                                    <div class=" col-sm-4  ">
+                                        <div class="row ">
+                                            <div class="col-sm-12 col-4 ">
+                                                <h6>Gender:</h6>
+                                            </div>
+                                            <div class="col-sm-6 col-4 form-check">
+                                                <input type="radio" class="form-check-input " id="radio1" name="gender"
+                                                    value="Male">
+                                                <label class="form-check-label " for="radio1">Male</label>
+                                            </div>
+                                            <div class="col-sm-6 col-4 form-check">
+                                                <input type="radio" class="form-check-input " id="radio2" name="gender"
+                                                    value="Female">
+                                                <label class="form-check-label" for="radio2">Female</label>
+                                            </div>
+                                            <!-- <div class="col-4 form-check ">
+                                                <input type="radio" class="form-check-input " id="radio3" name="gender"
+                                                    value="Other">
+                                                <label class="form-check-label" for="radio3">Other</label>
+                                            </div> -->
+                                            <valid id="validGender"><i class="fa-solid fa-circle-exclamation"></i>
+                                                This is a required question*
+                                            </valid>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <hr class=" mb-4">
+                                <div class="">
+                                    <div class="col-12 ">
+                                        <!-- <h6 class="add">Address</h6> -->
+                                        <textarea class="form-control mb-4 addPlacehioder"  id="add1" name="text"
+                                             placeholder="Address-1" autocomplete="off" required></textarea>
+                                        <valid id="validAdd1"><i class="fa-solid fa-circle-exclamation"></i>
+                                            This is a required question*
+                                        </valid>
+
+                                        <textarea class="form-control m-0 mt-2 mb-4 addPlacehioder" id="add2"
+                                            name="text"  placeholder="Address-2"></textarea>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6 m-0 mb-4">
+                                            <div class=" form-floating " id="inputValidationDiv7">
+                                                <select name="counrty" id="counrty" class="form-select select ">
+                                                    <option value="Select Country" selected="selected">Select Country
+                                                    </option>
+                                                </select>
+                                                <valid id="validCountry"><i class="fa-solid fa-circle-exclamation"></i>
+                                                    This is a required question*
+                                                </valid>
+                                                <label for="country" class="form-label ms-2 label upper">Counrty</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 mb-4">
+                                            <div class=" form-floating " id="inputValidationDiv8">
+                                                <select name="state" id="state" class="form-select select ">
+                                                    <option value="Select State" selected="selected">Select State
+                                                    </option>
+                                                </select>
+                                                <valid id="validState"><i class="fa-solid fa-circle-exclamation"></i>
+                                                    This is a required question*
+                                                </valid>
+                                                <label for="state" class="form-label ms-2 label upper">State </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6 m-0 ">
+                                            <div class=" form-floating " id="inputValidationDiv9">
+                                                <select name="city" id="city" class="form-select select">
+                                                    <option value="Select City" selected="selected">Select City</option>
+                                                </select>
+                                                <valid id="validCity"><i class="fa-solid fa-circle-exclamation"></i>
+                                                    This is a required question*
+                                                </valid>
+                                                <label for="city" class="form-label ms-2 label upper">City</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 m-0 ">
+                                            <div class=" form-floating " id="inputValidationDiv10">
+                                                <input type="text" class="form-control input control" id="pinCode"
+                                                    maxlength="6" placeholder="" autocomplete="off">
+                                                <label for="pinCode" class="form-date label  ms-2">Pin-code</label>
+                                                <valid id="validPinCode"><i class="fa-solid fa-circle-exclamation"></i>
+                                                    This is a required question*
+                                                </valid>
+                                                <valid id="validPincodeSize"><i
+                                                        class="fa-solid fa-circle-exclamation"></i>
+                                                    Enter valid pin-code*
+                                                </valid>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr class="mb-4 mt-4">
+                                <div class="row mt-3">
+                                    <div class="col-sm-6 mb-3">
+                                        <div class=" form-floating " id="inputValidationDiv11">
+                                            <input type="text" class="form-control input control" id="userName"
+                                                placeholder="" autocomplete="off">
+
+                                            <label for="userName" class="form-date ms-2 label">Username</label>
+                                            <valid id="validUser"><i class="fa-solid fa-circle-exclamation"></i>
+                                                This is a required question*
+                                            </valid>
+                                            <valid id="validUser2"><i class="fa-solid fa-circle-exclamation"></i>
+                                                Username is not valid*
+                                            </valid>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 mb-3">
+                                        <div class=" form-floating " id="inputValidationDiv12">
+                                            <input type="email" class="form-control input control" id="mail"
+                                                placeholder="" autocomplete="off">
+                                            <label for="mail" class="form-date ms-2 label">Email-id</label>
+                                            <valid id="validEmail"><i class="fa-solid fa-circle-exclamation"></i>
+                                                This is a required question*
+                                            </valid>
+                                            <valid id="validEmail2"><i class="fa-solid fa-circle-exclamation"></i>
+                                                Please enter valid email*
+                                            </valid>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6  mb-3">
+                                        <div class="input-group" id="inputValidationDiv13">
+                                            <input type="password" class=" form-control addPlacehioder "
+                                                placeholder="Password" id="password1" autocomplete="off">
+                                            <div class="input-group-text" onclick="passTextChange(this)"
+                                                style="width: 40px;justify-content: center;"><i class="fa fa-eye-slash"
+                                                    id="eye1" style="justify-content: center; font-size: 18px;"></i>
+                                            </div>
+                                        </div>
+                                        <valid id="validPass1"><i class="fa-solid fa-circle-exclamation"></i>
+                                            This is a required question*
+                                        </valid>
+                                        <valid id="validPass1Check"><i class="fa-solid fa-circle-exclamation"></i>
+                                            Password between 7 to 15 characters (xyz@123456)*
+                                        </valid>
+                                    </div>
+
+                                    <div class="col-sm-6  mb-3">
+                                        <div class="input-group" id="inputValidationDiv14">
+
+                                            <input type="password" class=" form-control addPlacehioder"
+                                                placeholder="Confirm password" id="password2" autocomplete="off">
+                                            <div class="input-group-text" onclick="passTextChange(this)"
+                                                style="width: 40px;justify-content: center;"><i class="fa fa-eye-slash"
+                                                    id="eye2" style="justify-content: center; font-size: 18px;"></i>
+                                            </div>
+                                        </div>
+                                        <valid id="validPass2"><i class="fa-solid fa-circle-exclamation"></i>
+                                            This is a required question*
+                                        </valid>
+                                        <valid id="validPass2Match"><i class="fa-solid fa-circle-exclamation"></i>
+                                            Password does not match*
+                                        </valid>
+
+                                    </div>
+                                </div>
+                                <div class=" grid-container">
+                                    <h6 class="item1 m-0">Hobby :</h6>
+                                    <div class=" form-check ">
+                                        <input type="checkbox" onclick="checkSelect(false)"
+                                            class="form-check-input hobby " id="check1" name="hobby"
+                                            value="Development">
+                                        <label class="form-check-label " for="check1">Development</label>
+                                    </div>
+                                    <div class=" form-check">
+                                        <input type="checkbox" onclick="checkSelect(false)"
+                                            class="form-check-input hobby" id="check2" name="hobby" value="Hollyball">
+                                        <label class="form-check-label" for="check2">Hollyball</label>
+                                    </div>
+                                    <div class=" form-check ">
+                                        <input type="checkbox" onclick="checkSelect(false)"
+                                            class="form-check-input hobby" id="check3" name="hobby" value="Reading">
+                                        <label class="form-check-label" for="check3">Reading</label>
+                                    </div>
+                                    <div class=" form-check ">
+                                        <input type="checkbox" onclick="checkSelect(true)"
+                                            class="form-check-input hobby " id="checkAll" name="all" value="All">
+                                        <label class="form-check-label" for="check4">All</label>
+                                    </div>
+                                    <valid id="validHobby"><i class="fa-solid fa-circle-exclamation"></i>
+                                        Please select atleast one hobby*
+                                    </valid>
+                                </div>
+                                <h6 class=" col-12 item2 m-0 mt-1 mb-2">Skill :</h6>
+                                <div class="" id="inputFields ">
+                                    <input type="text" placeholder="Add your skill"
+                                        class="form-control input-field skillInput" id="skillInput"
+                                        onkeydown="return /[a-z]/i.test(event.key)" oninput="changeText()"
+                                        maxlength="20" autocomplete="off">
+                                    <valid id="validSkill"><i class="fa-solid fa-circle-exclamation"></i>
+                                        Please enter atleast one skill*
+                                    </valid>
+                                    <div id="items" class="row d-flex">
+                                    </div>
+
+                                </div>
+
+                                <div class="row mb-1 mt-1">
+                                    <div class="col-6 d-grid">
+                                        <button type="reset" class="btn btn-outline-danger btn-block " id="Reset"
+                                            onclick="clearSkill()">Reset</button>
+                                    </div>
+                                    <div class="col-6 d-grid">
+                                        <button type="button" onclick=" validateForm(event) " onclick=""
+                                            class="btn btn-outline-success btn-block" id="submit">Submit</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Modal footer 
+                 <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                </div> -->
+
+            </div>
+        </div>
+    </div>
+
+
+    <script src="app.js"></script>
+</body>
+
+</html>
