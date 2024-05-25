@@ -936,25 +936,7 @@ $(document).ready(function () {
         inputVal = input.value.toUpperCase();
         table = document.getElementById("tbody")
         tr = table.getElementsByTagName("tr");
-        // for (let i = 0; i < tr.length; i++) {
-        //     let trEle = tr[i];
-        //     tdAll = trEle.getElementsByTagName("td");
-        //     for (let j = 1; j < tdAll.length; j++) {
-        //         let tdEle = tdAll[j];
-        //         console.log(trEle);
-        //         // if (j == 1 || j == 2 || j == 3 || j == 5 || j == 6 || j == 7 || j == 9 || j == 10 || j == 11) {
-        //         txtVal = tdEle.innerText || tdEle.textContent;
-        //         let filterVal = txtVal.toUpperCase().indexOf(inputVal);
-        //         if (filterVal > -1) {
-        //             tr[i].style.display = "";
-        //             break;
-        //         } else {
-        //             tr[i].style.display = "none";
-        //         }
-        //         // }
-        //     }
-
-        // }
+      
         let keyArr = [];
         data2.filter(myFunction);
         function myFunction(value, i, array) {
