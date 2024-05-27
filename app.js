@@ -551,6 +551,7 @@ function deleteRecord(key) {
         $("#pagiMainDiv").removeClass("paginationShow");
     }
     // }
+    filtering();
     noDataFound();
 }
 $("#pagiMainDiv").addClass("paginationHide");
