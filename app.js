@@ -529,6 +529,7 @@ function myfunction() {
 //Record Delete section 
 function deleteRecord(key) {
     // if (confirm("Record delete?")) {
+    data2 = data2Temp;
     data2.splice(key, 1);
 
     for (let i = key; i < data2.length; i++) {
@@ -943,7 +944,7 @@ $(document).ready(function () {
 function filtering() {
     let input, tr, tdAll, table, inputVal, txtVal;
     input = document.getElementById("search");
-    inputVal = input.value.toUpperCase();
+    inputVal = input.value.toUpperCase().trim();
     table = document.getElementById("tbody")
     tr = table.getElementsByTagName("tr");
 
@@ -1076,7 +1077,7 @@ function sortTable(tableClass, n) {
     dir = "asc";
     while (switching) {
         switching = false;
-        rows = table.getElementsByTagName("TR");
+        rows = table.getElementsByTagName("TR");    
         for (i = 1; i < (rows.length - 1); i++) {
             shouldSwitch = false;
             x = rows[i].getElementsByTagName("TD")[n];
