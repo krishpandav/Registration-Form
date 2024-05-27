@@ -2,36 +2,26 @@ let myform = document.getElementById("myForm");
 let fname = document.getElementById("fname");
 let mname = document.getElementById("mname");
 let lname = document.getElementById("lname");
-
 let date = document.getElementById("date");
-
 let phone = document.getElementById("phoneNo");
-
 let male = document.getElementById("radio1");
 let female = document.getElementById("radio2");
 let other = document.getElementById("radio3");
-
 let add1 = document.getElementById("add1");
 let add2 = document.getElementById("add2");
-
 let country = document.getElementById("counrty");
 let state = document.getElementById("state");
 let city = document.getElementById("city");
 let pincode = document.getElementById("pinCode");
-
 let user = document.getElementById("userName");
 let mail = document.getElementById("mail");
-
 let password1 = document.getElementById("password1");
 let password2 = document.getElementById("password2");
-
 let check1 = document.getElementById("check1");
 let check2 = document.getElementById("check2");
 let check3 = document.getElementById("check3");
 let checkAll = document.getElementById('checkAll');
-
 let skillInput = document.getElementById("skillInput");
-
 let Reset = document.getElementById("reset");
 let submit = document.getElementById("submit");
 
@@ -529,27 +519,27 @@ function myfunction() {
 //Record Delete section 
 function deleteRecord(key) {
     if (confirm("Record delete?")) {
-    data2 = data2Temp;
-    data2.splice(key, 1);
+        data2 = data2Temp;
+        data2.splice(key, 1);
 
-    for (let i = key; i < data2.length; i++) {
-        const element = data2[i];
-        element.index = element.index - 1;
-    }
+        for (let i = key; i < data2.length; i++) {
+            const element = data2[i];
+            element.index = element.index - 1;
+        }
 
-    let data3 = JSON.stringify(data2)
-    localStorage.clear();
-    localStorage.setItem("allData", data3);
-    if (temp * (currentPage - 1) == data2.length && currentPage != 1) {
-        start -= temp;
-        currentPage--;
-        endVal2 -= temp;
-    }
-    myfunction();
-    if (data2.length == 0) {
-        $("#pagiMainDiv").addClass("paginationHide");
-        $("#pagiMainDiv").removeClass("paginationShow");
-    }
+        let data3 = JSON.stringify(data2)
+        localStorage.clear();
+        localStorage.setItem("allData", data3);
+        if (temp * (currentPage - 1) == data2.length && currentPage != 1) {
+            start -= temp;
+            currentPage--;
+            endVal2 -= temp;
+        }
+        myfunction();
+        if (data2.length == 0) {
+            $("#pagiMainDiv").addClass("paginationHide");
+            $("#pagiMainDiv").removeClass("paginationShow");
+        }
     }
     filtering();
     noDataFound();
@@ -1050,8 +1040,6 @@ function arrowShowHide(ind) {
         children[3].classList.remove("d-none");
         temp1 = false;
     }
-
-
 }
 function defulatUpDown() {
     let Default = document.getElementsByClassName("default")
@@ -1072,33 +1060,32 @@ function defulatUpDown() {
 }
 function sortTable(tableClass, n) {
     var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
-
     table = document.getElementsByClassName(tableClass)[0];
     switching = true;
     dir = "asc";
     while (switching) {
         switching = false;
-        rows = table.getElementsByTagName("TR");    
+        rows = table.getElementsByTagName("TR");
         for (i = 1; i < (rows.length - 1); i++) {
             shouldSwitch = false;
             x = rows[i].getElementsByTagName("TD")[n];
             y = rows[i + 1].getElementsByTagName("TD")[n];
-            var xContent = (isNaN(x.innerHTML)) 
+            var xContent = (isNaN(x.innerHTML))
                 ? (x.innerHTML.toLowerCase() === '-')
-                      ? 0 : x.innerHTML.toLowerCase()
+                    ? 0 : x.innerHTML.toLowerCase()
                 : parseFloat(x.innerHTML);
-            var yContent = (isNaN(y.innerHTML)) 
+            var yContent = (isNaN(y.innerHTML))
                 ? (y.innerHTML.toLowerCase() === '-')
-                      ? 0 : y.innerHTML.toLowerCase()
+                    ? 0 : y.innerHTML.toLowerCase()
                 : parseFloat(y.innerHTML);
             if (dir == "asc") {
                 if (xContent > yContent) {
-                    shouldSwitch= true;
+                    shouldSwitch = true;
                     break;
                 }
             } else if (dir == "desc") {
                 if (xContent < yContent) {
-                    shouldSwitch= true;
+                    shouldSwitch = true;
                     break;
                 }
             }
@@ -1106,12 +1093,12 @@ function sortTable(tableClass, n) {
         if (shouldSwitch) {
             rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
             switching = true;
-            switchcount ++;      
+            switchcount++;
         } else {
             if (switchcount == 0 && dir == "asc") {
                 dir = "desc";
                 switching = true;
             }
         }
-     }
+    }
 }

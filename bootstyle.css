@@ -9,42 +9,19 @@
 body {
     align-items: center;
     background: url("blue-stripe-background-high-definition-photography-creative-wallpaper_715950-2330.jpg") left center/cover no-repeat;
-
-    /* background-position: bottom; */
-    /* background-repeat:no-repeat; */
-    /* background-position: cover; */
     display: flex;
     color: #070707;
     font-weight: lighter !important;
     justify-content: center;
 }
 
-/* .bg-image {
-  
-    background-image: url("freepik-export-20240523091950XK8C.jpeg");
-    
-    filter: blur(8px);
-    -webkit-filter: blur(8px);
-    
-    height: 100%; 
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-  } */
-
-
 .modal .modal-body {
-    /* opacity: 0.5; */
     background: url("50-Beautiful-and-Minimalist-Presentation-Backgrounds-03.jpg") center/cover no-repeat;
-    /* filter: blur(1px);
-    -webkit-filter: blur(1px); */
-    /* background-position:cover ; */
 }
 
 .img {
     margin-left: -3.5px;
     margin-bottom: -15.5px;
-
 }
 
 .container-md {
@@ -104,10 +81,8 @@ h2 {
     font-size: 13px;
     margin: 4px .75rem 0px 5px !important;
     height: fit-content !important;
-    /* background-color: white; */
     opacity: 1 !important;
     border-radius: 5px;
-
 }
 
 .select {
@@ -116,15 +91,7 @@ h2 {
     padding-bottom: 0px !important;
     font-size: 15px !important;
     border: 1px solid black;
-    /* background-color: #303030 ; */
-    /* background: transparent; */
     color: #000000;
-
-}
-
-.form-check-input {
-    /* background-color: rgb(233, 238, 245);
-     */
 }
 
 hr {
@@ -170,21 +137,17 @@ input:visited {
     font-size: 12px;
 }
 
-.addPlacehioder:focus,
-.skillInput:focus {
+.addPlacehioder:focus,.skillInput:focus {
     color: #121212 !important;
-
 }
 
 .input-field {
-    /* padding:2.2px 8px; */
     height: 28px;
     font-size: 13px;
     border: 1px solid #000000;
     border-radius: 5px;
     margin-bottom: 10px;
 }
-
 
 .skillDiv {
     display: flex;
@@ -258,8 +221,7 @@ input:visited {
     opacity: 0.8;
 }
 
-.modal-body,
-.modal-content {
+.modal-body,.modal-content {
     border-radius: 20px !important;
 }
 
@@ -298,7 +260,6 @@ valid {
 
 }
 
-
 .form-floating>.form-control:focus,
 .form-floating>.form-control:not(:placeholder-shown) {
     padding-top: 17px !important;
@@ -309,7 +270,6 @@ valid {
 .form-control,
 .form-label,
 .form-date {
-    /* background-color: rgb(233, 238, 245) !important; */
     background: transparent;
     color: #000000;
 }
@@ -322,35 +282,27 @@ valid {
         background-color: rgb(160, 184, 215) !important;
         opacity: 1;
         box-shadow: 1px 1px 1px black;
-        /* border-left: 0.8px solid rgb(0, 0, 0);
-        border-bottom: 0.5px solid rgb(0, 0, 0); */
         border-radius: 5px;
     }
 }
 
 .form-select {
     background-color: #cdc3db00 !important;
-    /* background: transparent; */
 }
 
 .form-control:focus,
 .form-select:focus {
     box-shadow: 0 0 0 0.25rem rgba(107, 174, 223, 0.315) !important;
     border-color: #000000 !important;
-    background: transparent;
-
-
 }
 
 .form-floating>.form-control:focus~label,
 .form-floating>.form-control:not(:placeholder-shown)~label,
 .form-floating>.form-select~label {
-
     opacity: .65;
     transform: scale(.85) translateY(-1.1rem) translateX(.15rem) !important;
     background-color: rgb(160, 184, 215);
     box-shadow: 1px 1px 1px black;
-
     border-radius: 5px;
 }
 
@@ -359,7 +311,6 @@ valid {
     z-index: 3;
     color: #ffffff !important;
     background: #0051d3f9 !important;
-    /* border: 1px solid rgb(15, 75, 144); */
     outline: 0;
     box-shadow: 0 0 0 .25rem rgba(63, 152, 235, 0.58);
 }
@@ -461,16 +412,9 @@ valid {
     }
 }
 
-
 .paginationDiv {
     display: flex;
 }
-
-/* .paginationOuterDiv {
-    display: flex;
-    border-radius: 5px;
-    box-shadow: 2px 2px 10px rgb(50, 69, 125);
-} */
 
 #pageNumber li a {
     border-radius: 50% !important;
@@ -484,8 +428,6 @@ valid {
     margin-left: 10px;
     margin-right: 10px;
     border: none;
-    /* background: transparent; */
-    /* border: 1px solid rgb(0, 0, 0); */
     color: #000000;
 }
 
@@ -497,10 +439,7 @@ valid {
     border-radius: 50px;
 }
 
-
-
 .rowNumber .page-link {
-    /* margin-top: 5px; */
     color: #000000 !important;
     display: flex;
     justify-content: center;
@@ -510,10 +449,7 @@ valid {
     background: #ffffff;
     border-radius: 20px !important;
     padding-right: 1px !important;
-    /* border:1px solid  #000000; */
-
 }
-
 
 .rowNumber .page-link:hover {
     z-index: 3;
@@ -525,7 +461,6 @@ valid {
 .rowNumber .page-link:focus {
     background: #fefefe62 !important;
     color: #000000 !important;
-
 }
 
 .paginationShow {
@@ -540,8 +475,6 @@ valid {
 #tableDiv {
     border-radius: 13px;
 }
-
-
 
 .table>:not(caption)>*>* {
     padding: .5rem .5rem;
@@ -561,11 +494,7 @@ valid {
     border-bottom: 1px solid black !important;
 }
 
-/* #pagiMainDiv{
-
-} */
 #formOpenbtn {
-    /* border: 1px solid rgb(0, 0, 0); */
     border-radius: 5px;
     color: rgb(6, 6, 6);
     font-weight: 600;
@@ -596,7 +525,6 @@ valid {
     border: none;
 }
 
-/*defualt up down sort*/
 .fa-solid {
     font-size: 13px;
     align-items: center;
@@ -609,12 +537,10 @@ input::placeholder,
 textarea::placeholder {
     color: rgb(0, 0, 0) !important;
     opacity: 1;
-    /* Firefox */
 }
 
 .table-responsive::-webkit-scrollbar {
     height: 8px !important;
-    /* scrollbar-width: thin !important; */
     width: 8px;
 }
 
@@ -633,8 +559,6 @@ textarea::placeholder {
 }
 
 /* Handle on hover */
-
-
 /***********************************/
 .modal::-webkit-scrollbar,
 body::-webkit-scrollbar {
@@ -651,7 +575,4 @@ body::-webkit-scrollbar {
 /* Handle */
 ::-webkit-scrollbar-thumb {
     background: rgb(155, 155, 155);
-    /* border: 0.1px solid rgb(89, 159, 210); */
-    /* border-radius: 10px; */
-    /* box-shadow: 4px -3px  4px rgb(51, 51, 52); */
 }
