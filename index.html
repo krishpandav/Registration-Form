@@ -39,25 +39,25 @@
         <div class="table-responsive text-nowrap  " id="tableDiv">
             <table class="table sortable" id="table">
                 <thead class="table-primary thead ">
-                    <tr>
-                        <th onclick="sortTable(0)">No.</th>
-                        <th onclick="sortTable(1)">Firstname</th>
-                        <th onclick="sortTable(2)">Middlename</th>
-                        <th onclick="sortTable(3)">Lastname</th>
-                        <th onclick="sortTable(4)">DOB</th>
-                        <th onclick="sortTable(5)">Mobile No</th>
-                        <th onclick="sortTable(6)">Gender</th>
-                        <th onclick="sortTable(7)">Address1</th>
-                        <th onclick="sortTable(8)">Address2</th>
-                        <th onclick="sortTable(9)">Country</th>
-                        <th onclick="sortTable(10)">State</th>
-                        <th onclick="sortTable(11)">City</th>
-                        <th onclick="sortTable(12)">PinCode</th>
-                        <th onclick="sortTable(13)">Username</th>
-                        <th onclick="sortTable(14)">Email</th>
-                        <th onclick="sortTable(15)">Password</th>
-                        <th onclick="sortTable(16)">Hobby</th>
-                        <th onclick="sortTable(17)">Skill</th>
+                    <tr id="theadTr">
+                        <th onclick="sortTable('sortable',0); arrowShowHide(0);" >No. <i class="fa-solid fa-sort default"></i><i class="fa-solid fa-sort-up d-none"></i><i class="fa-solid fa-sort-down d-none"></i></th>
+                        <th onclick="sortTable('sortable',1); arrowShowHide(1);">Firstname <i class="fa-solid fa-sort default"></i><i class="fa-solid fa-sort-up d-none"></i><i class="fa-solid fa-sort-down d-none"></i></th>
+                        <th onclick="sortTable('sortable',2); arrowShowHide(2);">Middlename <i class="fa-solid fa-sort default"></i><i class="fa-solid fa-sort-up d-none"></i><i class="fa-solid fa-sort-down d-none"></i></th>
+                        <th onclick="sortTable('sortable',3); arrowShowHide(3);">Lastname <i class="fa-solid fa-sort default"></i><i class="fa-solid fa-sort-up d-none"></i><i class="fa-solid fa-sort-down d-none"></i></th>
+                        <th onclick="sortTable('sortable',4); arrowShowHide(4);">DOB <i class="fa-solid fa-sort default"></i><i class="fa-solid fa-sort-up d-none"></i><i class="fa-solid fa-sort-down d-none"></i></th>
+                        <th onclick="sortTable('sortable',5); arrowShowHide(5);">Mobile No <i class="fa-solid fa-sort default"></i><i class="fa-solid fa-sort-up d-none"></i><i class="fa-solid fa-sort-down d-none"></i></th>
+                        <th onclick="sortTable('sortable',6); arrowShowHide(6);">Gender <i class="fa-solid fa-sort default"></i><i class="fa-solid fa-sort-up d-none"></i><i class="fa-solid fa-sort-down d-none"></i></th>
+                        <th onclick="sortTable('sortable',7); arrowShowHide(7);">Address1 <i class="fa-solid fa-sort default"></i><i class="fa-solid fa-sort-up d-none"></i><i class="fa-solid fa-sort-down d-none"></i></th>
+                        <th onclick="sortTable('sortable',8); arrowShowHide(8);">Address2 <i class="fa-solid fa-sort default"></i><i class="fa-solid fa-sort-up d-none"></i><i class="fa-solid fa-sort-down d-none"></i></th>
+                        <th onclick="sortTable('sortable',9); arrowShowHide(9);">Country <i class="fa-solid fa-sort default"></i><i class="fa-solid fa-sort-up d-none"></i><i class="fa-solid fa-sort-down d-none"></i></th>
+                        <th onclick="sortTable('sortable',10); arrowShowHide(10);">State <i class="fa-solid fa-sort default"></i><i class="fa-solid fa-sort-up d-none"></i><i class="fa-solid fa-sort-down d-none"></i></th>
+                        <th onclick="sortTable('sortable',11); arrowShowHide(11);">City <i class="fa-solid fa-sort default"></i><i class="fa-solid fa-sort-up d-none"></i><i class="fa-solid fa-sort-down d-none"></i></th>
+                        <th onclick="sortTable('sortable',12); arrowShowHide(12);">PinCode <i class="fa-solid fa-sort default"></i><i class="fa-solid fa-sort-up d-none"></i><i class="fa-solid fa-sort-down d-none"></i></th>
+                        <th onclick="sortTable('sortable',13); arrowShowHide(13);">Username <i class="fa-solid fa-sort default"></i><i class="fa-solid fa-sort-up d-none"></i><i class="fa-solid fa-sort-down d-none"></i></th>
+                        <th onclick="sortTable('sortable',14); arrowShowHide(14);">Email <i class="fa-solid fa-sort default"></i><i class="fa-solid fa-sort-up d-none"></i><i class="fa-solid fa-sort-down d-none"></i></th>
+                        <th onclick="sortTable('sortable',15); arrowShowHide(15);">Password <i class="fa-solid fa-sort default"></i><i class="fa-solid fa-sort-up d-none"></i><i class="fa-solid fa-sort-down d-none"></i></th>
+                        <th onclick="sortTable('sortable',16); arrowShowHide(16);">Hobby <i class="fa-solid fa-sort default"></i><i class="fa-solid fa-sort-up d-none"></i><i class="fa-solid fa-sort-down d-none"></i></th>
+                        <th onclick="sortTable('sortable',17); arrowShowHide(17);">Skill <i class="fa-solid fa-sort default"></i><i class="fa-solid fa-sort-up d-none"></i><i class="fa-solid fa-sort-down d-none"></i></th>
                         <th onclick="">Action</th>
                     </tr>
                 </thead>
@@ -403,7 +403,7 @@
                                             onclick="clearSkill()">Reset</button>
                                     </div>
                                     <div class="col-6 d-grid">
-                                        <button type="button" onclick=" validateForm(event) " onclick=""
+                                        <button type="button" onclick=" validateForm(event) "
                                             class="btn btn-outline-success btn-block" id="submit">Submit</button>
                                     </div>
                                 </div>

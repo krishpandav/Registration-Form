@@ -594,7 +594,13 @@ valid {
     box-shadow: 0px 0px 0px 5px #0000003d !important ;
     border: none;
 }
-
+/*defualt up down sort*/
+.fa-solid{
+    font-size: 13px;
+    align-items: center;
+    margin-left: 5px;
+    
+}
 .page-item.active .page-link {
     /* background: #2f9eff !important; */
     /* border: 1px solid #000000 !important; */

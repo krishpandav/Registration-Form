@@ -35,6 +35,11 @@ let skillInput = document.getElementById("skillInput");
 let Reset = document.getElementById("reset");
 let submit = document.getElementById("submit");
 
+//date validation
+var now = new Date();
+minDate = now.toISOString().substring(0, 10);
+$('#date').prop('max', minDate);
+
 //to uppercase.........
 function changeText() {
     fname.value = fname.value.toUpperCase();
@@ -510,10 +515,11 @@ function localStroge() {
 
 let data;
 let data2;
-
+let data2Temp;
 function myfunction() {
     data = localStorage.getItem("allData")
     data2 = JSON.parse(data);
+    data2Temp = data2;
     recordArr = [];
 
     if (data2)
@@ -610,7 +616,8 @@ function pagination() {
     $("#pagiMainDiv").addClass("paginationShow");
     document.getElementById("tbody").innerHTML = tableHTML;
     pageMaker();
-    searchClear();
+    defulatUpDown()
+    // searchClear();
 }
 
 //page box Mmaker
@@ -920,87 +927,56 @@ function editRecord(key) {
     skillMaker();
 
 }
-//date validation
-var now = new Date(),
-minDate = now.toISOString().substring(0,10);
-$('#date').prop('max', minDate);
+
 
 //filtering && serching 
 $(document).ready(function () {
     $("#search").on("input", function () {
-        $("#pagiMainDiv").addClass("paginationHide");
-        $("#pagiMainDiv").removeClass("paginationShow");
-        creatTable();
-        let input, tr, tdAll, table, inputVal, txtVal;
-        input = document.getElementById("search");
-        inputVal = input.value.toUpperCase();
-        table = document.getElementById("tbody")
-        tr = table.getElementsByTagName("tr");
-      
-        let keyArr = [];
-        data2.filter(myFunction);
-        function myFunction(value, i, array) {
-            for (const [key, objVal] of Object.entries(data2[i])) {
-                if (`${objVal}`.toUpperCase().includes(`${inputVal}`)) {
-                    keyArr.push(value);
-                    return;
-                }
-            }
-
-        }
-        let tableHTML = "";
-        keyArr.forEach((item, i) => {
-            tableHTML += '<tr>';
-            tableHTML += `<td>${item.index}</td>`;
-            tableHTML += `<td>${item.firstname}</td>`;
-            tableHTML += `<td>${item.middlename}</td>`;
-            tableHTML += `<td>${item.lastname}</td>`;
-            tableHTML += `<td>${item.date}</td>`;
-            tableHTML += `<td>${item.phoneNo}</td>`;
-            tableHTML += `<td>${item.gender}</td>`;
-            tableHTML += `<td>${item.add1}</td>`;
-            tableHTML += `<td>${item.add2}</td>`;
-            tableHTML += `<td>${item.country}</td>`;
-            tableHTML += `<td>${item.state}</td>`;
-            tableHTML += `<td>${item.city}</td>`;
-            tableHTML += `<td>${item.pincode}</td>`;
-            tableHTML += `<td>${item.username}</td>`;
-            tableHTML += `<td>${item.Email}</td>`;
-            tableHTML += `<td><div class="input-group">
-                    <input type="password" class=" form-control pass w-auto" value="${item.password}" 
-                        id="passTable">
-                    <div class="input-group-text" onclick="passTextChange(this)"
-                        style="width: 40px;justify-content: center;"><i class="fa fa-eye-slash"
-                            id="eye1" style="justify-content: center; font-size: 18px;"></i>
-                    </div>
-                </div></td>`;
-            tableHTML += `<td>${item.hobby}</td>`;
-
-            let arr = item.skill.map((val) => { return val.skill })
-            tableHTML += `<td>${arr}</td>`;
-            tableHTML += `<td><i class="btn fa-solid fa-trash-can text-danger" title="Delete record" id="deleteRecord" onclick="deleteRecord(${item.index - 1})"></i><i class="btn fa-regular fa-pen-to-square" title="Edit form" id="editRecord" onclick="editRecord(${item.index - 1})"></i></td>`;
-            tableHTML += '</tr>';
-
-        });
-        document.getElementById("tbody").innerHTML = tableHTML;
-        if (keyArr.length == 0)
-            filterNoData();
-        console.log(keyArr);
-
-        if (input.value == '' && data2.length != 0) {
-            pagination();
-            $("#pagiMainDiv").removeClass("paginationHide");
-            $("#pagiMainDiv").addClass("paginationShow");
-        }
+        $("#pageLink1").click();
+        data2 = data2Temp;
         noDataFound();
-
+        console.log(data2);
+        filtering();
     })
-    noDataFound();
 });
+//filtering
+function filtering() {
+    let input, tr, tdAll, table, inputVal, txtVal;
+    input = document.getElementById("search");
+    inputVal = input.value.toUpperCase();
+    table = document.getElementById("tbody")
+    tr = table.getElementsByTagName("tr");
+
+    let keyArr = [];
+    data2.filter(myFunction);
+    function myFunction(value, i, array) {
+        for (const [key, objVal] of Object.entries(data2[i])) {
+            if (`${objVal}`.toUpperCase().includes(`${inputVal}`)) {
+                keyArr.push(value);
+                return;
+            }
+        }
+    }
+    data2 = keyArr;
+    pagination();
+    if (keyArr.length == 0)
+        filterNoData();
+    console.log(keyArr);
+
+    if (input.value == '' && data2.length != 0) {
+        // pagination();
+        searchClear();
+        $("#pagiMainDiv").removeClass("paginationHide");
+        $("#pagiMainDiv").addClass("paginationShow");
+    }
+
+}
 
 //serching clear
 function searchClear() {
     let input = document.getElementById("search");
+    data2 = data2Temp;
+    pagination();
     input.value = "";
 }
 
@@ -1046,52 +1022,94 @@ function filterNoData() {
     tableHTML += '</tr>';
     document.getElementById("tbody").innerHTML = tableHTML;
 }
-function sortTable(n) {
-    var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
-    table = document.getElementById("table");
-    switching = true;
-   
-    dir = "asc";
+//sorting..............
+let temp1 = false;
+let count = 1;
+let varialble = 0;
+function arrowShowHide(ind) {
+    let ele = $("#theadTr").children();
+    if (varialble != ind) {
+        varialble = ind
+        temp1 = false;
+    }
+    let x = ele[ind];
+    console.log(x);
+    let children = ele[ind].childNodes;
+    defulatUpDown();
+    children[2].classList.add("d-none");
+    children[3].classList.add("d-none");
+    children[1].classList.add("d-none");
+    if (!temp1) {
+        children[2].classList.remove("d-none");
+        children[3].classList.add("d-none");
+        temp1 = true;
+    } else if (temp1) {
+        children[2].classList.add("d-none")
+        children[3].classList.remove("d-none");
+        temp1 = false;
+    }
 
+
+}
+function defulatUpDown() {
+    let Default = document.getElementsByClassName("default")
+    let up = document.getElementsByClassName("fa-sort-up")
+    let down = document.getElementsByClassName("fa-sort-down")
+    for (let i = 0; i < Default.length; i++) {
+        let val = Default[i];
+        val.classList.remove("d-none")
+    }
+    for (let i = 0; i < up.length; i++) {
+        let val = up[i];
+        val.classList.add("d-none")
+    }
+    for (let i = 0; i < down.length; i++) {
+        let val = down[i];
+        val.classList.add("d-none")
+    }
+}
+function sortTable(tableClass, n) {
+    var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+
+    table = document.getElementsByClassName(tableClass)[0];
+    switching = true;
+    dir = "asc";
     while (switching) {
         switching = false;
-        rows = table.rows;
-        //console.log(table.rows);
-    
-       
+        rows = table.getElementsByTagName("TR");
         for (i = 1; i < (rows.length - 1); i++) {
-           
             shouldSwitch = false;
-         
             x = rows[i].getElementsByTagName("TD")[n];
             y = rows[i + 1].getElementsByTagName("TD")[n];
-           
+            var xContent = (isNaN(x.innerHTML)) 
+                ? (x.innerHTML.toLowerCase() === '-')
+                      ? 0 : x.innerHTML.toLowerCase()
+                : parseFloat(x.innerHTML);
+            var yContent = (isNaN(y.innerHTML)) 
+                ? (y.innerHTML.toLowerCase() === '-')
+                      ? 0 : y.innerHTML.toLowerCase()
+                : parseFloat(y.innerHTML);
             if (dir == "asc") {
-                if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-                    
-                    shouldSwitch = true;
+                if (xContent > yContent) {
+                    shouldSwitch= true;
                     break;
                 }
             } else if (dir == "desc") {
-                if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
-                    
-                    shouldSwitch = true;
+                if (xContent < yContent) {
+                    shouldSwitch= true;
                     break;
                 }
             }
         }
         if (shouldSwitch) {
-            
             rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
             switching = true;
-            
-            switchcount++;
+            switchcount ++;      
         } else {
-            
             if (switchcount == 0 && dir == "asc") {
                 dir = "desc";
                 switching = true;
             }
         }
-    }
+     }
 }
