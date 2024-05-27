@@ -528,7 +528,7 @@ function myfunction() {
 
 //Record Delete section 
 function deleteRecord(key) {
-    // if (confirm("Record delete?")) {
+    if (confirm("Record delete?")) {
     data2 = data2Temp;
     data2.splice(key, 1);
 
@@ -550,7 +550,7 @@ function deleteRecord(key) {
         $("#pagiMainDiv").addClass("paginationHide");
         $("#pagiMainDiv").removeClass("paginationShow");
     }
-    // }
+    }
     filtering();
     noDataFound();
 }
@@ -599,7 +599,7 @@ function pagination() {
                 tableHTML += `<td>${item.Email}</td>`;
                 tableHTML += `<td><div class="input-group">
                     <input type="password" class=" form-control pass w-auto" value="${item.password}" 
-                        id="passTable">
+                        id="passTable" disabled>
                     <div class="input-group-text" onclick="passTextChange(this)"
                         style="width: 40px;justify-content: center;"><i class="fa fa-eye-slash"
                             id="eye1" style="justify-content: center; font-size: 18px;"></i>
