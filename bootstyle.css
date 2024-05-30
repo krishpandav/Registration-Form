@@ -295,6 +295,9 @@ valid {
     box-shadow: 0 0 0 0.25rem rgba(107, 174, 223, 0.315) !important;
     border-color: #000000 !important;
 }
+.form-control:focus{
+    background: transparent;
+}
 
 .form-floating>.form-control:focus~label,
 .form-floating>.form-control:not(:placeholder-shown)~label,
